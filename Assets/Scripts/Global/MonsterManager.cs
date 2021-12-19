@@ -26,7 +26,7 @@ public class MonsterManager : Singleton<MonsterManager>
         monsterPool = new GameobjectPool<Monster>(5, () =>
         {
             // 초기 스테이지에 해당하는 몬스터 오브젝트풀 세팅
-            monsterPrefab = GetMonster(GameManager.Instance.CurrentStage);
+            monsterPrefab = GetMonster();
 
             var obj = Instantiate(monsterPrefab);
             obj.transform.SetParent(transform);
@@ -64,12 +64,6 @@ public class MonsterManager : Singleton<MonsterManager>
             CreateMonsterEventHandler(this, new MonsterSettingEvent(newMonster.Level, newMonster.Hp, newMonster.Speed));
 
         newMonster.gameObject.SetActive(true);
-        if (!Handcuffs.Instance.monsterList.Contains(newMonster))
-        {
-            Handcuffs.Instance.monsterList.Add(newMonster);
-            Debug.Log($"MonsterListCount : {Handcuffs.Instance.monsterList.Count}");
-        }
-
         return newMonster;
     }
 
@@ -81,8 +75,8 @@ public class MonsterManager : Singleton<MonsterManager>
     }
     #endregion
 
-    public GameObject GetMonster(int _stage)
+    public GameObject GetMonster()
     {
-        return Resources.Load(ResourcesType.Monster.ToString() + "/Monster_" + _stage) as GameObject;
+        return Resources.Load("Unit/Monster") as GameObject;
     }
 }

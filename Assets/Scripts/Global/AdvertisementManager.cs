@@ -29,7 +29,7 @@ public class AdvertisementManager : Singleton<AdvertisementManager>
         string adUnitId = "ca-app-pub-3940256099942544/6300978111";
 #endif
 
-        front = new InterstitialAd(adUnitId);
+        //front = new InterstitialAd(adUnitId);
         front.OnAdClosed += OnAdClosed;
 
         AdRequest adRequest = new AdRequest.Builder().Build();

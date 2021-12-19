@@ -47,9 +47,6 @@ public class Monster : MonoBehaviour
             else
             {
                 animator.SetTrigger("Die");
-                if (Handcuffs.Instance.monsterList.Contains(this))
-                    Handcuffs.Instance.monsterList.Remove(this);
-
                 yield break;
             }
 
@@ -67,7 +64,7 @@ public class Monster : MonoBehaviour
         // GetComponent 초기화
         animator = GetComponent<Animator>();
     }
-    public void SetMonster(int _level, int _hp, float _speed)
+    public virtual void SetMonster(int _level, int _hp=0, float _speed=0)
     {
         level = _level;
         hp = _hp;
